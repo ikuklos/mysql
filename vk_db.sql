@@ -13,7 +13,7 @@ CREATE TABLE users (
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "Время обновления строки"
 ) COMMENT "Пользователи";  
 
--- Таблица профилей
+-- Таблица профилей (добавил статус для отметки работа, учусь, ничего не делаю)
 CREATE TABLE profiles (
   user_id INT UNSIGNED NOT NULL PRIMARY KEY COMMENT "Ссылка на пользователя", 
   gender CHAR(1) NOT NULL COMMENT "Пол",
@@ -22,6 +22,7 @@ CREATE TABLE profiles (
   status VARCHAR(30) COMMENT "Текущий статус",
   city VARCHAR(130) COMMENT "Город проживания",
   country VARCHAR(130) COMMENT "Страна проживания",
+  work_study_status VARCHAR(130) COMMENT "Статус занятости",
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT "Время создания строки",  
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "Время обновления строки"
 ) COMMENT "Профили"; 
@@ -93,3 +94,9 @@ CREATE TABLE media_types (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT "Время создания строки",  
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT "Время обновления строки"
 ) COMMENT "Типы медиафайлов";
+
+-- Таблица лайков (в домашнем заданиии "сгенерировать тестовые данные для всех таблиц, учитывая логику связей", но это не понял как сделать
+CREATE TABLE likes (
+  media_likes_counts INT UNSIGNED NOT NULL UNIQUE COMMENT "Лайки на медиафайлы",
+  posts_likes_counts INT UNSIGNED COMMENT "Лайки на посты"
+) COMMENT "Лайки";
